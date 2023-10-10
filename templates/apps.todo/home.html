@@ -19,11 +19,15 @@
         <nav class="navbar bg-body">
             <div class="container-fluid">
               <ul>
-                <li><a href="#" class="navbar-brand title">To Do</a></li>
+                <li><a href="{% url 'home' %}" class="navbar-brand title">To Do</a></li>
               </ul>
               <ul>
-                  <li><button class="btn btn-outline-success" type="submit">Sign up</button></li>
-                  <li><button class="btn btn-outline-success" type="submit">Log In</button></li>
+                  {% if user.authenticated %}
+                    <li><a class="btn btn-outline-success">Log out</a></li>
+                  {% else %}
+                    <li><a class="btn btn-outline-success">Sign up</a></li>
+                    <li><a class="btn btn-outline-success" href="{% url 'login' %}">Log In</a></li>
+                  {% endif %}
               </ul>
             </div>
         </nav>

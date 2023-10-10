@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.todo',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -99,3 +100,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "todo.CustomUser"
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "apps.todo:home"
+LOGOUT_REDIRECT_URL = "apps.todo:home"
