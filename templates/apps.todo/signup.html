@@ -20,16 +20,24 @@
             <div class="card mt-5">
                 <div class="card-body">
                     <h2 class="text-center text-danger title mb-4">Sign Up</h2>
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
                         <div class="mb-3">
-                            <label for="signup-email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="signup-email" placeholder="Enter your email">
+                            {{ form.email|attr:'class:form-control'|attr:'type:email'|attr:'id:email'
+                            |attr:'placeholder:Enter your email' }}
+                            <label for="email" class="form-label">Email</label>
                         </div>
                         <div class="mb-3">
-                            <label for="signup-password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="signup-password" placeholder="Enter your password">
+                            {{ form.password1|attr:'class:form-control'|attr:'type:password'|attr:'id:password1'
+                            |attr:'placeholder:Enter your password' }}
+                            <label for="password1" class="form-label">Password</label>
                         </div>
-                        <button type="submit" class="btn btn-success">Sign Up</button>
+                        <div class="mb-3">
+                            {{ form.password2|attr:'class:form-control'|attr:'type:password'|attr:'id:password2'
+                            |attr:'placeholder:Confirm your email' }}
+                            <label for="password2" class="form-label">Password confirmation</label>
+                        </div>
+                        <button type="submit" class="btn btn-success mb-3">Sign Up</button>
                     </form>
                 </div>
             </div>

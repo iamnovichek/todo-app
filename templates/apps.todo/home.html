@@ -22,8 +22,8 @@
                 <li><a href="{% url 'home' %}" class="navbar-brand title">To Do</a></li>
               </ul>
               <ul>
-                  {% if user.authenticated %}
-                    <li><a class="btn btn-outline-success">Log out</a></li>
+                  {% if user.is_authenticated %}
+                    <li><a class="btn btn-outline-success" href="{% url 'logout' %}">Log out</a></li>
                   {% else %}
                     <li><a class="btn btn-outline-success">Sign up</a></li>
                     <li><a class="btn btn-outline-success" href="{% url 'login' %}">Log In</a></li>

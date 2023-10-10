@@ -24,29 +24,31 @@
         </div>
     {% endfor %}
 {% endif %}
-<form method="post">
-        {% csrf_token %}
 <div class="container">
     <div class="row">
-        <div class="col mx-auto">
+        <div class="col mx-1">
             <div class="card mt-5">
                 <div class="card-body">
-                    <h2 class="text-center text-danger title mb-4">Login</h2>
-                    <form>
+                    <h2 class="text-center text-danger title mb-5">Login</h2>
+                    <form method="post">
+                        {% csrf_token %}
                         <div class="mb-3 form-floating">
-                            {{ form.username|attr:'class:form-control'|attr:'type:email'|attr:'id:email'|attr:'placeholder:Enter your email' }}
+                            {{ form.username|attr:'class:form-control'|attr:'type:email'|attr:'id:email'
+                            |attr:'placeholder:Enter your email' }}
                             <label for="email">Email</label>
                         </div>
                         <div class="mb-3 form-floating">
-                            {{ form.username|attr:'class:form-control'|attr:'type:password'|attr:'id:password'|attr:'placeholder:Enter your password' }}
+                            {{ form.password|attr:'class:form-control'|attr:'type:password'|attr:'id:password'
+                            |attr:'placeholder:Enter your password' }}
                             <label for="password">Password</label>
                         </div>
-                        <button type="submit" class="btn btn-success position-absolute bottom-0 start-50 translate-middle-x">Login</button>
+                        <br>
+                        <button type="submit" class="btn btn-success position-absolute bottom-0
+                        start-50 translate-middle-x">Login</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-</form>
 {% endblock %}
