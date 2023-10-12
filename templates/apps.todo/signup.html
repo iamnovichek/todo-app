@@ -1,4 +1,5 @@
 {% extends 'apps.todo/base.html' %}
+{% load widget_tweaks %}
 
 {% block extrahead %}
     <meta charset="utf-8">
@@ -24,15 +25,15 @@
                         {% csrf_token %}
                         <div class="mb-3">
                             {{ form.email|attr:'class:form-control'|attr:'type:email'|attr:'id:email'|attr:'placeholder:Enter your email' }}
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email">Email</label>
                         </div>
                         <div class="mb-3">
                             {{ form.password1|attr:'class:form-control'|attr:'type:password'|attr:'id:password1'|attr:'placeholder:Enter your password' }}
-                            <label for="password1" class="form-label">Password</label>
+                            <label for="password1">Password</label>
                         </div>
                         <div class="mb-3">
                             {{ form.password2|attr:'class:form-control'|attr:'type:password'|attr:'id:password2'|attr:'placeholder:Confirm your email' }}
-                            <label for="password2" class="form-label">Password confirmation</label>
+                            <label for="password2">Password confirmation</label>
                         </div>
                         <button type="submit" class="btn btn-success mb-3">Sign Up</button>
                     </form>

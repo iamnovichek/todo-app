@@ -81,7 +81,7 @@ class CustomUser(AbstractBaseUser):
 
 
 class Task(models.Model):
-    user = models.OneToOneField(to=CustomUser, related_name="task", on_delete=models.CASCADE)
+    user = models.ForeignKey(to=CustomUser, related_name="task", on_delete=models.CASCADE)
     title = models.CharField(max_length=255, validators=[MinLengthValidator(2)])
     description = models.TextField(null=True, blank=True)
     completed = models.BooleanField(default=False)

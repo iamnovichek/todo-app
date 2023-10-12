@@ -2,6 +2,10 @@
     list-style: none;
 }
 
+.no-decoration{
+    text-decoration: none;
+}
+
 .title{
     font-family: 'Permanent Marker', cursive;
 }
