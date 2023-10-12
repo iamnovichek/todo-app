@@ -46,10 +46,10 @@
                             <ul class="list-group">
 		                    {% for task in tasks %}
 			                    <li class="list-group-item">
-                                    <a href="#" class="link-secondary link-underline-opacity-0">
+                                    <a href="{% url 'detail-task' task.id %}" class="link-secondary link-underline-opacity-0">
                                         {% if task.completed %} <del>{{task}}</del> {% else %} {{task}} {% endif %}
                                     </a>
-                                    <a href="#"><i class="bi bi-pencil p-1 position-absolute text-success"></i></a>
+                                    <a href="{% url 'update-task' task.id %}"><i class="bi bi-pencil p-1 position-absolute text-success"></i></a>
                                     <a href="{% url 'delete-task' task.id %}"><i class="bi bi-trash p-1 text-danger"></i></a>
 		                        </li>
 		                    {% endfor %}

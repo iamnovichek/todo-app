@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import CreateView, ListView, DeleteView
+from django.views.generic import CreateView, ListView, DeleteView, DetailView, UpdateView
 
 from .forms import CustomSignupForm, CreateTaskForm
 from .models import Task
@@ -90,3 +90,30 @@ class DeleteTaskView(DeleteView):
         if form.is_valid():
             super().post(request, *args, **kwargs)
             return redirect(self.success_url)
+
+
+class DetailTaskView(DetailView):
+    model = Task
+    context_object_name = 'task'
+    template_name = "apps.todo/task-detail.html"
+
+    def get_queryset(self):
+        queryset = super(DetailTaskView, self).get_queryset()
+        return queryset.filter(user=self.request.user)
+
+
+class UpdateTaskView(UpdateView):
+    model = Task
+    fields = ['title',
+              'description',
+              'completed']
+    success_url = 'home'
+    template_name = "apps.todo/update-task.html"
+
+    def get_queryset(self):
+        queryset = super(UpdateTaskView, self).get_queryset()
+        return queryset.filter(user=self.request.user)
+
+    def post(self, request, *args, **kwargs):
+        super().post(request, *args, **kwargs)
+        return redirect(self.success_url)
